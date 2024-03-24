@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+#welcome-text {
+  background: repeating-linear-gradient(
+    45deg,
+    #ff7e5f,
+    #feb47b 20%,
+    #ff7e5f 40%
+  );
+  color: transparent;
+  background-clip: text;
+}
