@@ -8,6 +8,7 @@ import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import { motion } from "framer-motion";
 import { MovieDetails } from './utils/moviedetails';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 export default function App() {
   const [movies, setMovies] = useState(TopMovies);
   const [showDrawer, setShowDrawer] = useState(false);
@@ -83,7 +84,7 @@ export default function App() {
           gap: 2
         }}>
           {movies.map((topmovie, index) => {
-            const { id, image, rating, thumbnail } = topmovie;
+            const { id, image, rating, } = topmovie;
             return <motion.div key={index} style={{
               position: 'relative',
             }}
@@ -94,7 +95,7 @@ export default function App() {
                 opacity: 1
               }}
             >
-              <Box component="img" alt="" src={image} sx={{
+              <Box component={LazyLoadImage} alt="" src={image} sx={{
                 width: { xs: '100%', sm: 200, },
                 height: { xs: '100%', sm: 250 },
                 boxShadow: 4,
@@ -105,8 +106,6 @@ export default function App() {
                 }
 
               }}
-                loading="lazy"
-                onError={(e) => e.target.src = thumbnail}
                 onClick={() => {
                   setPassrank(id);
                   setShowDrawer(true)
